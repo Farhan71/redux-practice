@@ -15,8 +15,9 @@ export const cartData = (data=[], action) => {
             return [action.data, ...data]
         case REMOVE_FROM_CART:           
             console.warn("reducer called from remove from cart", action);
-            data.length = data.length ? data.length - 1 : [];
-            return [...data]
+            const remainingItems = data.filter((item)=> item.id !== action.data) 
+            // data.length = data.length ? data.length - 1 : [];
+            return [...remainingItems]
         case EMPTY_CART:           
             console.warn("reducer called from remove from cart", action);
             data = []
